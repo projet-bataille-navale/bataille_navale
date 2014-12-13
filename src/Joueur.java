@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.event.ActionEvent;
+
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
@@ -55,7 +56,6 @@ public class Joueur extends Utilisateur{
 		 															}
 
 		//
-		@Override
 		public void actionPerformed(ActionEvent e) {
 			if(joueur_actif){
 			if(b && !detruire){
