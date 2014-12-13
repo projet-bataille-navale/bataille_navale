@@ -35,7 +35,7 @@ public class Joueur extends Utilisateur{
 	 												}
 		
 		//
-		public int detruire_bateau(Navire b, int id,int x, int y){
+		public void detruire_bateau(Navire b, int id,int x, int y){
 			 for(Case i : g.grille){	
 					if(i.getI()==x && i.getJ()==y&& i.isE_case() && b.id==i.getId_case()){
 						i.setE_bat(true);
@@ -47,12 +47,11 @@ public class Joueur extends Utilisateur{
 							liste_navire.remove(b);
 							b.nbr_case = -1;
 											}
-						return 1;
+					
 																	}
 					
 									
-									}
-			return 0;		 
+									}	 
 		 															}
 
 		//
@@ -105,7 +104,7 @@ public class Joueur extends Utilisateur{
 						touche=0;
 											}
 					else{
-					touche=detruire_bateau(n,c.getId_case(),c.getI(),c.getJ());
+					detruire_bateau(n,c.getId_case(),c.getI(),c.getJ());
 						}
 										}
 								}

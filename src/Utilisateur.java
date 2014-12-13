@@ -149,7 +149,7 @@ import javax.swing.JPanel;
 		
 		//detruire un bateau
 		
-		abstract int detruire_bateau(Navire b, int id,int x, int y);
+		abstract void detruire_bateau(Navire b, int id,int x, int y);
 		
 		public boolean isjoueur_actif() {
 			return joueur_actif;
