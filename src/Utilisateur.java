@@ -27,11 +27,7 @@ import javax.swing.JPanel;
 	
 	public Utilisateur(int id ) {
 		this.id = id;
-<<<<<<< HEAD
 		g = new Grille(id);
-=======
-		g = new Grille();
->>>>>>> 2d848ef9b8e9852caf1dd875619e7ac0fa9b1e28
 		liste_navire = new ArrayList<Navire>();
 		
 		//creation des boutons
@@ -116,16 +112,17 @@ import javax.swing.JPanel;
 	
 	Navire chercher_bateau(int id){
 		for(Navire n : liste_navire){
-<<<<<<< HEAD
 			if(n.getId() == id){
-=======
 			if(n.id == id){
->>>>>>> 2d848ef9b8e9852caf1dd875619e7ac0fa9b1e28
 				return n;
 								}
 									}
-				return null;
-									}
+				
+									
+		}
+		return null;
+	}
+	
 
 	
 	//Activer les bouton des bateaux
@@ -137,11 +134,7 @@ import javax.swing.JPanel;
 		porte_avion.setEnabled(true);
 							}
 	
-<<<<<<< HEAD
-	//DÃ©sactiver les bouton des bateaux
-=======
-	//Désactiver les bouton des bateaux
->>>>>>> 2d848ef9b8e9852caf1dd875619e7ac0fa9b1e28
+
 	
 	void desactiver_buttons(){
 		zodiac.setEnabled(false);
@@ -165,8 +158,4 @@ import javax.swing.JPanel;
 		public void setjoueur_actif(boolean activer_joueur) {
 			this.joueur_actif = activer_joueur;
 		}
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 2d848ef9b8e9852caf1dd875619e7ac0fa9b1e28
