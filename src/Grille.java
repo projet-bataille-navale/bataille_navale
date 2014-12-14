@@ -25,12 +25,12 @@ public class Grille extends JPanel {
 		
 		for(i=0; i<10; i++){
 			for(j=0; j<10; j++){
-					grille.add(new Case(-1,i,j,false,false));			  
+					grille.add(new Case(-1,i,j,false,true,false));			  
 								}
 							}
 		
 		for(Case y : grille){
-						y.setBackground(Color.WHITE);
+						y.setBackground(Color.blue);
 						y.setEnabled(false);
 						panel_grille.add(y);		
 							}

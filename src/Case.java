@@ -4,15 +4,24 @@ import javax.swing.JButton;
 
 public class Case extends JButton{
 	private int id_case,i,j;
-	private boolean e_bat, e_case;
+	private boolean e_bat, e_case_vide , e_case_touchee;
 	
-	public Case(int id_case, int i, int j, boolean e_bat, boolean e_case) {
+	public Case(int id_case, int i, int j, boolean e_bat, boolean e_case_vide, boolean e_case_touchee) {
 		super();
 		this.id_case = id_case;
 		this.i = i;
 		this.j = j;
 		this.e_bat = e_bat;
-		this.e_case = e_case;
+		this.e_case_vide = e_case_vide;
+		this.e_case_touchee = e_case_touchee;
+	}
+
+	public boolean isE_case_touchee() {
+		return e_case_touchee;
+	}
+
+	public void setE_case_touchee(boolean e_case_touchee) {
+		this.e_case_touchee = e_case_touchee;
 	}
 
 	public int getId_case() {
@@ -31,12 +40,12 @@ public class Case extends JButton{
 		this.e_bat = e_bat;
 	}
 
-	public boolean isE_case() {
-		return e_case;
+	public boolean isE_case_vide() {
+		return e_case_vide;
 	}
 
-	public void setE_case(boolean e_case) {
-		this.e_case = e_case;
+	public void setE_case_vide(boolean e_case_vide) {
+		this.e_case_vide = e_case_vide;
 	}
 
 	public int getI() {

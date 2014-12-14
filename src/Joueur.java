@@ -1,14 +1,17 @@
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 
+import javax.swing.AbstractButton;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
 
 
 public class Joueur extends Utilisateur{
 	int cpt , touche = -1 ;//cpt = compteur pour construire les bateaux
 	Case c;
-	boolean b=true , detruire=false ;
+	boolean b=true , detruire=false ; // c pour differencier entre les bouton ou bien la liste des navires et les cases a la phase de la creation
 
 	
 
@@ -22,11 +25,11 @@ public class Joueur extends Utilisateur{
 		public void creer_bateau(Navire b,int x, int y){
 			int tmp =0;			
 			for(Case i : g.grille){
-				
-				if(i.getI()==x && i.getJ()==y && tmp<b.nbr_case && !i.isE_case() ){
+				// on test les x et les y et on test aussi si on a atteind le nombre de case du navire et on test si la case concerné pour la construction du bateau est vide
+				if(i.getI()==x && i.getJ()==y && tmp<b.nbr_case && i.isE_case_vide() ){
 					i.setId_case(b.id);
-					i.setE_case(true);
-					i.setBackground(Color.GRAY);			 
+					i.setE_case_vide(false);
+					i.setBackground(Color.DARK_GRAY);			 
 					y++;
 					tmp++;
 																					}
@@ -37,10 +40,11 @@ public class Joueur extends Utilisateur{
 		//
 		public void detruire_bateau(Navire b, int id,int x, int y){
 			 for(Case i : g.grille){	
-					if(i.getI()==x && i.getJ()==y&& i.isE_case() && b.id==i.getId_case()){
+				 // on test si la case contient un bateau si oui donc la case contient l'id du bateau
+					if(i.getI()==x && i.getJ()==y&& !i.isE_case_vide() && b.id==i.getId_case()){
 						i.setE_bat(true);
+						i.setE_case_touchee(true);
 						i.setBackground(Color.red);
-						i.setEnabled(false);
 						b.nbr_case--;
 						if(b.nbr_case == 0){
 							JOptionPane.showMessageDialog(g,"Le "+  b.nom+" est coulé"," Attention ",JOptionPane.WARNING_MESSAGE);
@@ -53,66 +57,80 @@ public class Joueur extends Utilisateur{
 									
 									}	 
 		 															}
+		
+		
+		@Override
+		public void valueChanged(ListSelectionEvent arg0) {
+			// TODO Auto-generated method stub
+			if(joueur_actif){
+				if(b && !detruire){
+				activer_List();
+				bateau=bateau(List.getSelectedValue());
+				desactiver_List();
+				g.activer_grille();
+				b=false;
+				}
+			}
+			
+		}
 
 		//
 		public void actionPerformed(ActionEvent e) {
 			if(joueur_actif){
-			if(b && !detruire){
-			activer_buttons();
-			String Navire = ((JButton) e.getSource()).getText();
-			desactiver_buttons();
-			g.activer_grille();
-			bateau=bateau(Navire);
-			b=false;
-								}
 			
-			else if(!b){
-			c = (Case) e.getSource();
-			//construction des bateaux
-			if (cpt < nbr_bateaux ){
-				if(c.isE_case()){
-				JOptionPane.showMessageDialog(this,  "la case est deja remplie !"," Attention ",JOptionPane.WARNING_MESSAGE);
-								}	
-				else if(cases_vides(bateau,c.getI(),c.getJ())){
-					creer_bateau(bateau,c.getI(),c.getJ());
-					activer_buttons();
-					g.desactiver_grille();
-					cpt++;
-					b=true;
-																}
+				if(!b){
+					c = (Case) e.getSource();
+					//construction des bateaux
+					if (cpt < nbr_bateaux ){
+						if(!c.isE_case_vide()){
+							JOptionPane.showMessageDialog(this,  "la case est deja remplie !"," Attention ",JOptionPane.WARNING_MESSAGE);
+										}	
+						else if(cases_vides(bateau,c.getI(),c.getJ())){
+							creer_bateau(bateau,c.getI(),c.getJ());
+							activer_List();
+							g.desactiver_grille();
+							cpt++;
+							b=true;
+																		}
 				
 			//si le nombre de bateaux est atteint le message se déclenche
-			if(cpt == nbr_bateaux){
-					desactiver_buttons();
+				if(cpt == nbr_bateaux){
+					desactiver_List();
 					g.hide_grille();
 					joueur_actif=false;
 					detruire = true;
 					JOptionPane.showMessageDialog(this,  "le nombre de bateaux est atteint "," Attention ",JOptionPane.WARNING_MESSAGE);
 									}
-								}
+											}
 						}
 			
 			//la destruction des bateaux
 			else if(detruire && b){
-				//g.activer_grille();
 				c = (Case) e.getSource();
-				Navire n=chercher_bateau(c.getId_case());
-				if(cpt == nbr_bateaux){
-					if(c.getId_case()==-1){
+				
+				//tester si la case est deja touchée !!
+				if(c.isE_case_touchee() ){
+					JOptionPane.showMessageDialog(this,  "Deja touchée "," Attention ",JOptionPane.WARNING_MESSAGE);		
+										}
+				else{
+				Navire n=chercher_bateau(c.getId_case());// chercher le bateau dans la memoire !!
+					if(c.getId_case()==-1){ // si l'id de la case -1 ça veut dire que la case est vide ne contient aucun bateau
 						c.setBackground(Color.green);
-						c.setEnabled(false);
+						c.setE_case_touchee(true);
 						touche=0;
 											}
 					else{
 					detruire_bateau(n,c.getId_case(),c.getI(),c.getJ());
 						}
 										}
+					}
 								}
 			if(liste_navire.isEmpty()){
 				JOptionPane.showMessageDialog(this,  "Félicitation !! vous avez gagné !!"," Attention ",JOptionPane.WARNING_MESSAGE);	
-			}
-			}
-		}
+										}
+						}
+													}
+
 			
 
-}
+

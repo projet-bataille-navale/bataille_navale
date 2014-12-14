@@ -1,9 +1,13 @@
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Graphics;
+import java.awt.Image;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
@@ -14,6 +18,7 @@ public class main {
 
 		boolean construction = true ;
 		JFrame f = new JFrame("Bataille_Navale");
+		
 		Joueur user = new Joueur(1);
 		Joueur user2 = new Joueur(2);
 		JPanel panel_grille = new JPanel(new BorderLayout());
@@ -28,8 +33,8 @@ public class main {
 	    f.pack();
 	    f.setSize(new Dimension(800, 400));
 	    
-	    
 	    user.setjoueur_actif(true);
+	    
 	    
 	    while(construction){
 	    
@@ -54,7 +59,6 @@ public class main {
 	    			user.g.desactiver_grille();
 	    			user2.g.activer_grille();
 	    			user.touche = -1;
-	    			System.out.println("joueur 1 : " + user.touche);
 	    			}
 	    	if(user2.touche == 0 ){
     				user.setjoueur_actif(true);
@@ -62,7 +66,6 @@ public class main {
     				user2.g.desactiver_grille();
     				user.g.activer_grille();
     				user2.touche = -1;
-    				System.out.println("joueur 2 : " + user2.touche);
     							}
 	    	
 	    					}
