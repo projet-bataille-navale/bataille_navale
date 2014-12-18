@@ -24,14 +24,6 @@ public class Joueur extends Utilisateur implements ActionListener{
 					c.addActionListener(this);
 				}
 							}
-	
-		//creation du bateau sur la grille
-		
-		
-		//
-		 
-		 														
-		
 		
 		@Override
 		public void valueChanged(ListSelectionEvent arg0) {

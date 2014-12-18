@@ -19,8 +19,8 @@ public class main {
 		boolean construction = true ;
 		JFrame f = new JFrame("Bataille_Navale");
 		
-		Ordinateur user = new Ordinateur(1);
-		Joueur user2 = new Joueur(2);
+		Ordinateur user2 = new Ordinateur(1);
+		Joueur user = new Joueur(2);
 		JPanel panel_grille = new JPanel(new BorderLayout());
 
 		panel_grille.add(user,BorderLayout.NORTH);
@@ -51,7 +51,6 @@ public class main {
 	    											}
 	    							}
 	    
-	  /*  
 	    while(!construction){
 	    	if(user.touche == 0){
 	    			user2.setjoueur_actif(true);
@@ -68,7 +67,7 @@ public class main {
     				user2.touche = -1;
     							}
 	    	
-	    					}*/
+	    					}
 	    
 	    					}
 	    
