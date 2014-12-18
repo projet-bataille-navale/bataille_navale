@@ -27,41 +27,10 @@ public class Joueur extends Utilisateur implements ActionListener{
 	
 		//creation du bateau sur la grille
 		
-		public void creer_bateau(Navire b,int x, int y){
-			int tmp =0;			
-			for(Case i : g.grille){
-				// on test les x et les y et on test aussi si on a atteind le nombre de case du navire et on test si la case concerné pour la construction du bateau est vide
-				if(i.getI()==x && i.getJ()==y && tmp<b.nbr_case && i.isE_case_vide() ){
-					i.setId_case(b.id);
-					i.setE_case_vide(false);
-					i.setBackground(Color.DARK_GRAY);			 
-					y++;
-					tmp++;
-																					}
-								
-								}
-	 												}
 		
 		//
-		public void detruire_bateau(Navire b, int id,int x, int y){
-			 for(Case i : g.grille){	
-				 // on test si la case contient un bateau si oui donc la case contient l'id du bateau
-					if(i.getI()==x && i.getJ()==y&& !i.isE_case_vide() && b.id==i.getId_case()){
-						i.setE_bat(true);
-						i.setE_case_touchee(true);
-						i.setBackground(Color.red);
-						b.nbr_case--;
-						if(b.nbr_case == 0){
-							JOptionPane.showMessageDialog(g,"Le "+  b.nom+" est coulé"," Attention ",JOptionPane.WARNING_MESSAGE);
-							liste_navire.remove(b);
-							b.nbr_case = -1;
-											}
-					
-																	}
-					
-									
-									}	 
-		 															}
+		 
+		 														
 		
 		
 		@Override
