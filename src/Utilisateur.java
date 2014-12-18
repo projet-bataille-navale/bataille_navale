@@ -11,7 +11,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.event.ListSelectionListener;
 
- abstract class Utilisateur extends JPanel implements ActionListener,ListSelectionListener {
+ abstract class Utilisateur extends JPanel implements ListSelectionListener {
+	 
 		final int nbr_bateaux = 5;
 		boolean joueur_actif;
 
@@ -23,25 +24,22 @@ import javax.swing.event.ListSelectionListener;
 		
 		JList<String> List;
 		ArrayList<Navire> liste_navire;
+		String[] Navire = {"zodiac", "sous_marin", "porte_avion", "cuirasses_furtifs"};
 	
 	//GRAPHIC
 
 	JPanel panel_bateau;
 	
 	public Utilisateur(int id ) {
+
 		this.id = id;
 		g = new Grille(id);
 		liste_navire = new ArrayList<Navire>();// Liste des navire pour ajouter les navires dans la memoire ou bien les supprimer 
 		
 		panel_bateau = new JPanel(new FlowLayout());
-		String[] Navire = {"zodiac", "sous_marin", "porte_avion", "cuirasses_furtifs"};
-		List = new JList<String>(Navire); 
+		List = new JList<String>(Navire);
 		panel_bateau.add(List);
 		
-		//ajouter les listeners pour les cases de la grille
-		for(Case c : g.grille){
-			c.addActionListener(this);
-		}
 		// listener pour la List graphique
 		List.addListSelectionListener(this);
 		

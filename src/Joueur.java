@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.AbstractButton;
 import javax.swing.JButton;
@@ -8,7 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 
 
-public class Joueur extends Utilisateur{
+public class Joueur extends Utilisateur implements ActionListener{
 	int cpt , touche = -1 ;//cpt = compteur pour construire les bateaux
 	Case c;
 	boolean b=true , detruire=false ; // c pour differencier entre les bouton ou bien la liste des navires et les cases a la phase de la creation
@@ -18,6 +19,10 @@ public class Joueur extends Utilisateur{
 	public Joueur(int id ) {
 		super(id);
 		this.nom="Joueur";
+		//ajouter les listeners pour les cases de la grille
+				for(Case c : g.grille){
+					c.addActionListener(this);
+				}
 							}
 	
 		//creation du bateau sur la grille
