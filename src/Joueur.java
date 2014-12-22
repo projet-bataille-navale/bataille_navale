@@ -10,9 +10,9 @@ import javax.swing.event.ListSelectionEvent;
 
 
 public class Joueur extends Utilisateur implements ActionListener{
-	int cpt , touche = -1 ;//cpt = compteur pour construire les bateaux
+	int cpt;//cpt = compteur pour construire les bateaux
 	Case c;
-	boolean b=true , detruire=false ; // c pour differencier entre les bouton ou bien la liste des navires et les cases a la phase de la creation
+	boolean b=true , detruire = false ; // c pour differencier entre les bouton ou bien la liste des navires et les cases a la phase de la creation
 
 	
 
@@ -28,23 +28,21 @@ public class Joueur extends Utilisateur implements ActionListener{
 		@Override
 		public void valueChanged(ListSelectionEvent arg0) {
 			// TODO Auto-generated method stub
-			if(joueur_actif){
-				if(b && !detruire){
+			if(joueur_actif && b){
 				activer_List();
 				bateau=bateau(List.getSelectedValue());
 				desactiver_List();
 				g.activer_grille();
 				b=false;
-				}
 			}
 			
 		}
 
 		//
 		public void actionPerformed(ActionEvent e) {
-			if(joueur_actif){
+	
 			
-				if(!b){
+				if(!b && joueur_actif){
 					c = (Case) e.getSource();
 					//construction des bateaux
 					if (cpt < nbr_bateaux ){
@@ -63,15 +61,16 @@ public class Joueur extends Utilisateur implements ActionListener{
 				if(cpt == nbr_bateaux){
 					desactiver_List();
 					g.hide_grille();
-					joueur_actif=false;
-					detruire = true;
 					JOptionPane.showMessageDialog(this,  "le nombre de bateaux est atteint "," Attention ",JOptionPane.WARNING_MESSAGE);
-									}
+					detruire = true;
+										}
 											}
 						}
 			
+
 			//la destruction des bateaux
-			else if(detruire && b){
+
+				if(!joueur_actif && detruire==false){
 				c = (Case) e.getSource();
 				
 				//tester si la case est deja touchée !!
@@ -83,14 +82,15 @@ public class Joueur extends Utilisateur implements ActionListener{
 					if(c.getId_case()==-1){ // si l'id de la case -1 ça veut dire que la case est vide ne contient aucun bateau
 						c.setBackground(Color.green);
 						c.setE_case_touchee(true);
-						touche=0;
+						touchee=0;
 											}
 					else{
 					detruire_bateau(n,c.getId_case(),c.getI(),c.getJ());
 						}
 										}
 					}
-								}
+			
+								
 			if(liste_navire.isEmpty()){
 				JOptionPane.showMessageDialog(this,  "Félicitation !! vous avez gagné !!"," Attention ",JOptionPane.WARNING_MESSAGE);	
 										}
@@ -98,5 +98,3 @@ public class Joueur extends Utilisateur implements ActionListener{
 													}
 
 			
-
-

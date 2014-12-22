@@ -16,8 +16,8 @@ import javax.swing.event.ListSelectionListener;
  class Utilisateur extends JPanel implements ListSelectionListener {
 	 
 		final int nbr_bateaux = 5;
-		boolean joueur_actif;
-
+		boolean joueur_actif = false;
+		int touchee = -1;
 		int id ;
 		String nom;
 		Grille g;
@@ -156,6 +156,8 @@ import javax.swing.event.ListSelectionListener;
 				if(i.getI()==x && i.getJ()==y&& !i.isE_case_vide() && b.id==i.getId_case()){
 					i.setE_bat(true);
 					i.setE_case_touchee(true);
+					touchee = 1;
+					System.out.println(touchee);
 					i.setBackground(Color.red);
 					b.nbr_case--;
 					if(b.nbr_case == 0){
@@ -176,7 +178,7 @@ import javax.swing.event.ListSelectionListener;
 			return joueur_actif;
 		}
 
-		public void setjoueur_actif(boolean activer_joueur) {
+		public  void setjoueur_actif(boolean activer_joueur) {
 			this.joueur_actif = activer_joueur;
 		}
 
