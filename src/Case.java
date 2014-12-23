@@ -1,7 +1,5 @@
 import javax.swing.JButton;
 
-
-
 public class Case extends JButton{
 	private int id_case,i,j;
 	private boolean e_bat, e_case_vide , e_case_touchee;

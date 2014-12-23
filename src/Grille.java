@@ -12,13 +12,11 @@ import javax.swing.JPanel;
 public class Grille extends JPanel {
 	
 	ArrayList<Case> grille;
-	int id; // l'identifiant de la grille est l'identifiant du joueur
 	int i,j;// les i "x" et les j "y" pour la contruction de la grille (parcourir)
 	
 	JPanel panel_grille;
 	
-	 public Grille(int id) {
-		this.id = id;
+	 public Grille() {
 		panel_grille = new JPanel( new GridLayout(10, 10) );
 		
 		grille = new ArrayList<Case>();

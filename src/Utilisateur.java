@@ -1,19 +1,13 @@
 import java.awt.Color;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
- class Utilisateur extends JPanel implements ListSelectionListener {
+
+ class Utilisateur extends JPanel {
 	 
 		final int nbr_bateaux = 5;
 		boolean joueur_actif = false;
@@ -24,8 +18,8 @@ import javax.swing.event.ListSelectionListener;
 		Navire bateau;
 		int num_bateau = 1;
 		
-		JList<String> List;
 		ArrayList<Navire> liste_navire;
+		JList<String> List;
 		String[] Navire = {"zodiac", "sous_marin", "porte_avion", "cuirasses_furtifs"};
 	
 	//GRAPHIC
@@ -35,15 +29,12 @@ import javax.swing.event.ListSelectionListener;
 	public Utilisateur(int id ) {
 
 		this.id = id;
-		g = new Grille(id);
+		g = new Grille();
 		liste_navire = new ArrayList<Navire>();// Liste des navire pour ajouter les navires dans la memoire ou bien les supprimer 
 		
 		panel_bateau = new JPanel(new FlowLayout());
 		List = new JList<String>(Navire);
 		panel_bateau.add(List);
-		
-		// listener pour la List graphique
-		List.addListSelectionListener(this);
 		
 		this.add(panel_bateau);
 		this.add(g);
@@ -58,7 +49,7 @@ import javax.swing.event.ListSelectionListener;
 			 if(i.getI()==x && i.getJ()==y && tmp<b.nbr_case ){
 				 
 				 if(!i.isE_case_vide()){
-				 JOptionPane.showMessageDialog(g,  "baaa9"," Attention ",JOptionPane.WARNING_MESSAGE);
+				// JOptionPane.showMessageDialog(g,  "y'a un autre bateau proche"," Attention ",JOptionPane.WARNING_MESSAGE);
 				 return false;
 				 					}
 				 y++;
@@ -150,26 +141,31 @@ import javax.swing.event.ListSelectionListener;
 		
 		//detruire un bateau ( methode abstract car on va l'utiliser d'un maniere differente entre un joueur et un ordinateur )
 		
-	public void detruire_bateau(Navire b, int id,int x, int y){
+	public int detruire_bateau(Navire b, int id,int x, int y){
 		 for(Case i : g.grille){	
 			 // on test si la case contient un bateau si oui donc la case contient l'id du bateau
-				if(i.getI()==x && i.getJ()==y&& !i.isE_case_vide() && b.id==i.getId_case()){
+				if(i.getI()==x && i.getJ()==y && !i.isE_case_vide() && b.id==i.getId_case()){
 					i.setE_bat(true);
 					i.setE_case_touchee(true);
-					touchee = 1;
-					System.out.println(touchee);
 					i.setBackground(Color.red);
 					b.nbr_case--;
 					if(b.nbr_case == 0){
 						JOptionPane.showMessageDialog(g,"Le "+  b.nom+" est coulé"," Attention ",JOptionPane.WARNING_MESSAGE);
 						liste_navire.remove(b);
-						b.nbr_case = -1;
+						//b.nbr_case = -1;
 										}
-				
+					return 1;
 																}
+				else if(i.getI()==x && i.getJ()==y && i.isE_case_vide()){
+					i.setE_case_touchee(true);
+					i.setBackground(Color.green);
+					return 0;
+					
+																		}
 				
 								
-								}	 
+								}
+		return -1;	 
 	 															}
 		
 		// comme un declencheur pour manipuler les deux joueurs si le joueur actif c'est a lui de construire les bateaux ou bien les detruire s'il est desactiver il doit attendre son role
@@ -180,15 +176,6 @@ import javax.swing.event.ListSelectionListener;
 
 		public  void setjoueur_actif(boolean activer_joueur) {
 			this.joueur_actif = activer_joueur;
-		}
-
-		@Override
-		public void valueChanged(ListSelectionEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-		
-		
-		
+		}		
 		
 }
