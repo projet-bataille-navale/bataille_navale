@@ -44,8 +44,10 @@ public class Ordinateur extends Utilisateur implements ActionListener{
 	public void detruire(Utilisateur u){
 		int x = (int) (Math.random() *  (9 - 1 ) )  ;
 		int y = (int) (Math.random() *  (9 - 1 ) )  ;
+		
 		System.out.println(x +" " + y +" " + u.nom);
-		c = chercher_case(x,y,u.g);			
+		c = chercher_case(x,y,u.g);	
+		System.out.println(c.getI() +" " + c.getJ());
 		//tester si la case est deja touchée !!
 		if(c.isE_case_touchee() ){
 			JOptionPane.showMessageDialog(this,  "Deja touchée "," Attention ",JOptionPane.WARNING_MESSAGE);

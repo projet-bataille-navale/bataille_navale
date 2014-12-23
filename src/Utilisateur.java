@@ -152,7 +152,6 @@ import javax.swing.JPanel;
 					if(b.nbr_case == 0){
 						JOptionPane.showMessageDialog(g,"Le "+  b.nom+" est coulé"," Attention ",JOptionPane.WARNING_MESSAGE);
 						liste_navire.remove(b);
-						//b.nbr_case = -1;
 										}
 					return 1;
 																}

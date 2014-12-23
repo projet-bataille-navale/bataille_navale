@@ -55,8 +55,6 @@ public class main {
 	    	if(user.touchee == 0 ){
  				user.g.desactiver_grille();
  				user2.g.activer_grille();
- 				user2.setjoueur_actif(false);
- 				user.setjoueur_actif(true);
  				user.touchee = -1;
  								}
 	    	
@@ -65,8 +63,6 @@ public class main {
  	    			user2.g.desactiver_grille();
 	    			user.g.activer_grille();
  	    			user2.detruire(user);
- 	    			user.setjoueur_actif(false);
- 	    			user2.setjoueur_actif(true);
 	    			user2.touchee = -1;				
  	    			}
  	    	

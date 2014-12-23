@@ -68,7 +68,7 @@ public class Joueur extends Utilisateur implements ActionListener , ListSelectio
 
 				if(!joueur_actif){
 				c = (Case) e.getSource();
-				System.out.println(c.getId_case() + " " + c.getI() + " " + c.getJ());
+				System.out.println(c.getI() + " " + c.getJ());
 				//tester si la case est deja touchée !!
 					if(c.isE_case_touchee() ){
 					JOptionPane.showMessageDialog(this,  "Deja touchée "," Attention ",JOptionPane.WARNING_MESSAGE);		
