@@ -9,7 +9,7 @@ public class Joueur extends Utilisateur implements ActionListener , ListSelectio
 	int cpt;//cpt = compteur pour construire les bateaux
 	Case c ;
 	boolean b=true ; // c pour differencier entre les bouton ou bien la liste des navires et les cases a la phase de la creation
-
+	 
 	
 
 	public Joueur(int id ) {
@@ -38,7 +38,24 @@ public class Joueur extends Utilisateur implements ActionListener , ListSelectio
 
 		//
 		public void actionPerformed(ActionEvent e) {	
-				if(!b && joueur_actif){
+			if(joueur_actif){
+				
+				//la destruction des bateaux
+
+				if(detruire){
+				c = (Case) e.getSource();
+				//System.out.println(c.getI() + " " + c.getJ());
+				//tester si la case est deja touchée !!
+					if(c.isE_case_touchee() ){
+					JOptionPane.showMessageDialog(this,  "Deja touchée "," Attention ",JOptionPane.WARNING_MESSAGE);		
+										}
+					else{
+					Navire n=chercher_bateau(c.getId_case());// chercher le bateau dans la memoire !!
+					touchee = detruire_bateau(n,c.getId_case(),c.getI(),c.getJ());
+						}
+										}
+				
+				if(!b){
 					c = (Case) e.getSource();
 					//construction des bateaux
 					if (cpt < nbr_bateaux ){
@@ -57,27 +74,12 @@ public class Joueur extends Utilisateur implements ActionListener , ListSelectio
 				if(cpt == nbr_bateaux){
 					desactiver_List();
 					g.hide_grille();
-					c = null;
+					detruire = true;
 					JOptionPane.showMessageDialog(this,  "le nombre de bateaux est atteint "," Attention ",JOptionPane.WARNING_MESSAGE);
 										}
 											}
 						}
-			
-
-			//la destruction des bateaux
-
-				if(!joueur_actif){
-				c = (Case) e.getSource();
-				System.out.println(c.getI() + " " + c.getJ());
-				//tester si la case est deja touchée !!
-					if(c.isE_case_touchee() ){
-					JOptionPane.showMessageDialog(this,  "Deja touchée "," Attention ",JOptionPane.WARNING_MESSAGE);		
-										}
-					else{
-					Navire n=chercher_bateau(c.getId_case());// chercher le bateau dans la memoire !!
-					touchee = detruire_bateau(n,c.getId_case(),c.getI(),c.getJ());
-						}
-										}
+			}
 				
 											
 			if(liste_navire.isEmpty()){
