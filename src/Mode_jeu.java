@@ -1,66 +1,51 @@
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 
-public class Mode_jeu {
+public class Mode_jeu extends JFrame implements ActionListener{
 	
-	void joueur_joueur(JFrame f ){
-		boolean construction = true ;
-		boolean joueur = true ;
-		
-		Joueur user1 = new Joueur(1);
-		Joueur user2 = new Joueur(2);
-		
-		JPanel panel_grille = new JPanel(new BorderLayout());
+	Joueur_Joueur j_j_mode;
+	
+	JButton j_j;
+    JButton j_o;
+    JButton o_o;
+	JPanel panel_mode ;
+	JPanel panel_joueur;
+	
+	public Mode_jeu(){
+		this.setTitle("BATAILLE NAVALE");
+		panel_mode = new JPanel(new GridLayout(3,1));
+		this.setVisible(true);
+	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE );
+	    this.pack();
+	    this.setSize(new Dimension(800, 400));
+	    j_j = new JButton("Joueur VS Joueur");
+	    j_o = new JButton("Joueur VS Ordinateur");
+	    o_o = new JButton("Ordinateur VS Ordinateur");
+	    j_j.addActionListener(this);
+	    panel_mode.add(j_j);
+	    panel_mode.add(j_o);
+	    panel_mode.add(o_o);
+	    this.add(panel_mode);
+	}
+	
+	
 
-		panel_grille.add(user1,BorderLayout.NORTH);
-		panel_grille.add(user2,BorderLayout.CENTER);
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getActionCommand() == "Joueur VS Joueur"){
+			this.dispose();
+			j_j_mode = new Joueur_Joueur();
+		}
 		
-		f.setVisible(true);
-	    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE );
-	    f.pack();
-	    f.setSize(new Dimension(800, 400));
-	    
-	    while(construction){
- 	    	if(joueur){
- 	    		user1.setjoueur_actif(true);
- 	    		if(user1.cpt==user1.nbr_bateaux){
- 	    			user1.setjoueur_actif(false);
- 	    			joueur=false;
- 	    						} 			
- 	    					}	    
- 	    	if(!joueur){
- 	    		user2.setjoueur_actif(true);
- 	    		//user2.construire();
- 	    		if(user2.cpt == user2.nbr_bateaux){
- 	    			construction = false;
- 	    			user1.setjoueur_actif(true);
- 	    			user2.setjoueur_actif(true);
- 	    			user2.g.activer_grille();
- 	    											}
- 	    							}    	
- 	    }
-
-	    while(!construction ){
-	    	// si user2 touche une case vide de user :
-	    	if(user1.touchee == 0 ){
- 				user1.g.desactiver_grille();
- 				user2.g.activer_grille();
- 				user1.touchee = -1;
- 								}
-	    	
-	    	// si user touche une case vide de user2 :
- 	    	if(user2.touchee == 0){
- 	    			user2.g.desactiver_grille();
-	    			user1.g.activer_grille();
- 	    			//user2.detruire(user);
-	    			user2.touchee = -1;				
- 	    			}
-	    					}
-	    
 	}
 
 }

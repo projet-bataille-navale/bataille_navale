@@ -8,12 +8,14 @@ public class Ordinateur extends Utilisateur implements ActionListener{
 	int cpt = 0 ;
 	int x , y;
 	int indice_bateau_liste;
-	Case c;
+
+	
 	public Ordinateur(int id) {
 		super(id);
 		this.nom="Ordinateur";
 		joueur_actif=true;
 		desactiver_List();
+		g.desactiver_grille();
 		for(Case c : g.grille){
 			c.addActionListener(this);
 		}
@@ -35,6 +37,7 @@ public class Ordinateur extends Utilisateur implements ActionListener{
 									}
 		if(cpt == nbr_bateaux){
 			g.hide_grille();
+			detruire = true;
 								}
 			
 			}
@@ -44,23 +47,22 @@ public class Ordinateur extends Utilisateur implements ActionListener{
 	public void detruire(Utilisateur u){
 		int x = (int) (Math.random() *  (9 - 1 ) )  ;
 		int y = (int) (Math.random() *  (9 - 1 ) )  ;
-		
-		System.out.println(x +" " + y +" " + u.nom);
-		c = chercher_case(x,y,u.g);	
-		System.out.println(c.getI() +" " + c.getJ());
+		Case c;
+		c = chercher_case(x,y,u);	
 		//tester si la case est deja touchée !!
 		if(c.isE_case_touchee() ){
 			JOptionPane.showMessageDialog(this,  "Deja touchée "," Attention ",JOptionPane.WARNING_MESSAGE);
 								}
 			else{
 			Navire n=chercher_bateau(c.getId_case());// chercher le bateau dans la memoire !!
-			touchee = detruire_bateau(n,c.getId_case(),c.getI(),c.getJ());
-			System.out.println(touchee);
-				}				
+			u.touchee = detruire_bateau(u,n,c.getId_case(),c.getI(),c.getJ());
+			System.out.println(u.touchee);
+				}			
+		
 										}								
 	
-	public Case chercher_case(int x , int y , Grille gr){
-		for(Case c : gr.grille){
+	public Case chercher_case(int x , int y , Utilisateur u){
+		for(Case c : u.g.grille){
 			if(x == c.getI() && y==c.getJ()){
 				return c;
 											}
@@ -72,8 +74,8 @@ public class Ordinateur extends Utilisateur implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if(!joueur_actif){
-			c = (Case) e.getSource();
+		if(joueur_actif && detruire){
+			Case c = (Case) e.getSource();
 			
 			//tester si la case est deja touchée !!
 			if(c.isE_case_touchee() ){
@@ -81,10 +83,10 @@ public class Ordinateur extends Utilisateur implements ActionListener{
 									}
 				else{
 				Navire n=chercher_bateau(c.getId_case());// chercher le bateau dans la memoire !!
-				touchee = detruire_bateau(n,c.getId_case(),c.getI(),c.getJ());
+				touchee = detruire_bateau(this,n,c.getId_case(),c.getI(),c.getJ());
 					}
 									
-				}				
+									}				
 		if(liste_navire.isEmpty()){
 			JOptionPane.showMessageDialog(this,  "Félicitation !! vous avez gagné !!"," Attention ",JOptionPane.WARNING_MESSAGE);	
 									}

@@ -142,8 +142,8 @@ import javax.swing.JPanel;
 		
 		//detruire un bateau ( methode abstract car on va l'utiliser d'un maniere differente entre un joueur et un ordinateur )
 		
-	public int detruire_bateau(Navire b, int id,int x, int y){
-		 for(Case i : g.grille){	
+	public int detruire_bateau(Utilisateur u ,Navire b, int id,int x, int y){
+		 for(Case i : u.g.grille){	
 			 // on test si la case contient un bateau si oui donc la case contient l'id du bateau
 				if(i.getI()==x && i.getJ()==y && !i.isE_case_vide() && b.id==i.getId_case()){
 					i.setE_bat(true);

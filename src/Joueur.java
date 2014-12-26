@@ -51,7 +51,7 @@ public class Joueur extends Utilisateur implements ActionListener , ListSelectio
 										}
 					else{
 					Navire n=chercher_bateau(c.getId_case());// chercher le bateau dans la memoire !!
-					touchee = detruire_bateau(n,c.getId_case(),c.getI(),c.getJ());
+					touchee = detruire_bateau(this,n,c.getId_case(),c.getI(),c.getJ());
 						}
 										}
 				
