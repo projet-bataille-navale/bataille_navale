@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 		Grille g;
 		Navire bateau;
 		int num_bateau = 1;
+		boolean detruire = false;
 		
 		ArrayList<Navire> liste_navire;
 		JList<String> List;
