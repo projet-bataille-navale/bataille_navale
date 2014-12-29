@@ -159,6 +159,10 @@ import javax.swing.JPanel;
 				else if(i==c && i.isE_case_vide()){
 					i.setE_case_touchee(true);
 					i.setBackground(Color.green);
+					System.out.println("Radar : ");
+					System.out.println(Radar(x,y));
+					System.out.println(x);
+					System.out.println(y);
 					return 0;
 					
 																		}
@@ -176,6 +180,26 @@ import javax.swing.JPanel;
 
 		public  void setjoueur_actif(boolean activer_joueur) {
 			this.joueur_actif = activer_joueur;
-		}		
+		}
+		
+		public int Radar(int h, int z){
+			int dif_x=0;
+			int dif_y=0;
+			int min =1000;
+			int res=0;
+			 for(Case i:g.grille){				
+				 if(i.getId_case()!=-1){
+					 dif_x=Math.abs(h-i.getX());
+					 dif_y=Math.abs(z-i.getY());
+					 res=dif_x+dif_y;
+					 if(min>=res)
+						 min=res;
+				// System.out.println(i.getId_case());
+				 }
+				 }
+		return min;
+		}
+		
+		 
 		
 }

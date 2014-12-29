@@ -70,7 +70,6 @@ public class Ordinateur extends Utilisateur implements ActionListener{
 			
 	}
 
-	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(joueur_actif ){

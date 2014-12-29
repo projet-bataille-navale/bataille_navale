@@ -23,7 +23,6 @@ public class Joueur extends Utilisateur implements ActionListener , ListSelectio
 		List.addListSelectionListener(this);
 							}
 		
-		@Override
 		public void valueChanged(ListSelectionEvent arg0) {
 			// TODO Auto-generated method stub
 			if(joueur_actif && b){
