@@ -93,7 +93,7 @@ import javax.swing.JPanel;
 				return null;
 									}
 	
-	//chercher un bateau dans la list
+	//chercher un bateau dans la liste
 	
 	Navire chercher_bateau(int id){
 		for(Navire n : liste_navire){
@@ -110,19 +110,19 @@ import javax.swing.JPanel;
 	
 
 	
-	//Activer la liste des bateaux
+	//Activer la liste Graphique JList des bateaux
 	
 	void activer_List(){
 		List.setEnabled(true);
 							}
 
-	//Desactiver la liste des bateaux
+	//Desactiver la liste Graphique JList des bateaux
 
 	void desactiver_List(){
 		List.setEnabled(false);
 							}
 	
-		//creation du bateau sur la grille (methode abstract car on va l'utiliser d'un maniere differente entre un joueur et un ordinateur )
+	//creation du bateau sur la grille 
 	
 	void creer_bateau(Navire b, int x, int y) {
 		// TODO Auto-generated method stub
@@ -132,7 +132,7 @@ import javax.swing.JPanel;
 			if(i.getI()==x && i.getJ()==y && tmp<b.nbr_case && i.isE_case_vide() ){
 				i.setId_case(b.id);
 				i.setE_case_vide(false);
-				i.setBackground(Color.DARK_GRAY);			 
+				i.setBackground(Color.BLACK);			 
 				y++;
 				tmp++;
 																				}
@@ -140,12 +140,12 @@ import javax.swing.JPanel;
 		
 												}
 		
-		//detruire un bateau ( methode abstract car on va l'utiliser d'un maniere differente entre un joueur et un ordinateur )
+		//detruire un bateau 
 		
-	public int detruire_bateau(Utilisateur u ,Navire b, int id,int x, int y){
+	public int detruire_bateau(Utilisateur u ,Navire b,Case c){
 		 for(Case i : u.g.grille){	
 			 // on test si la case contient un bateau si oui donc la case contient l'id du bateau
-				if(i.getI()==x && i.getJ()==y && !i.isE_case_vide() && b.id==i.getId_case()){
+				if(i==c && !i.isE_case_vide() && i.getId_case()==b.id){
 					i.setE_bat(true);
 					i.setE_case_touchee(true);
 					i.setBackground(Color.red);
@@ -156,7 +156,7 @@ import javax.swing.JPanel;
 										}
 					return 1;
 																}
-				else if(i.getI()==x && i.getJ()==y && i.isE_case_vide()){
+				else if(i==c && i.isE_case_vide()){
 					i.setE_case_touchee(true);
 					i.setBackground(Color.green);
 					return 0;

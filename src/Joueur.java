@@ -41,17 +41,15 @@ public class Joueur extends Utilisateur implements ActionListener , ListSelectio
 			if(joueur_actif){
 				
 				//la destruction des bateaux
-
 				if(detruire){
 				c = (Case) e.getSource();
-				//System.out.println(c.getI() + " " + c.getJ());
 				//tester si la case est deja touchée !!
 					if(c.isE_case_touchee() ){
 					JOptionPane.showMessageDialog(this,  "Deja touchée "," Attention ",JOptionPane.WARNING_MESSAGE);		
 										}
 					else{
 					Navire n=chercher_bateau(c.getId_case());// chercher le bateau dans la memoire !!
-					touchee = detruire_bateau(this,n,c.getId_case(),c.getI(),c.getJ());
+					touchee = detruire_bateau(this,n,c);
 						}
 										}
 				
@@ -64,6 +62,7 @@ public class Joueur extends Utilisateur implements ActionListener , ListSelectio
 										}	
 						else if(cases_vides(bateau,c.getI(),c.getJ())){
 							creer_bateau(bateau,c.getI(),c.getJ());
+							System.out.println(bateau.id);
 							activer_List();
 							g.desactiver_grille();
 							cpt++;
@@ -80,11 +79,7 @@ public class Joueur extends Utilisateur implements ActionListener , ListSelectio
 											}
 						}
 			}
-				
-											
-			if(liste_navire.isEmpty()){
-				JOptionPane.showMessageDialog(this,  "Félicitation !! vous avez gagné !!"," Attention ",JOptionPane.WARNING_MESSAGE);	
-										}
+		
 				
 						}
 													}

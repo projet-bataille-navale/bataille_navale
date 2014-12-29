@@ -21,12 +21,13 @@ public class Grille extends JPanel {
 		
 		grille = new ArrayList<Case>();
 		
+		// creation de la grille a la memoire ! 
 		for(i=0; i<10; i++){
 			for(j=0; j<10; j++){
 					grille.add(new Case(-1,i,j,false,true,false));			  
 								}
 							}
-		
+		// creation de la grille sur la vue !
 		for(Case y : grille){
 						y.setBackground(Color.blue);
 						y.setEnabled(false);
