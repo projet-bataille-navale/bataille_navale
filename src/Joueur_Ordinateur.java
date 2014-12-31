@@ -58,6 +58,12 @@ JPanel panel_joueur;
 	    	// si user1 touche une case vide de user2 / user2 c'est a son role de joueur :
  	    	if(user2.touchee == 0){
 	    			user1.g.activer_grille();
+	    			try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
  	    			user2.detruire(user1);
 	    			user2.touchee = -1;	
  	    							}

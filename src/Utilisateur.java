@@ -145,7 +145,8 @@ import javax.swing.JPanel;
 	public int detruire_bateau(Utilisateur u ,Navire b,Case c){
 		 for(Case i : u.g.grille){	
 			 // on test si la case contient un bateau si oui donc la case contient l'id du bateau
-				if(i==c && !i.isE_case_vide() && i.getId_case()==b.id){
+												//
+			 if(i==c && !i.isE_case_vide() && i.getId_case()==b.id){
 					i.setE_bat(true);
 					i.setE_case_touchee(true);
 					i.setBackground(Color.red);
@@ -159,20 +160,18 @@ import javax.swing.JPanel;
 				else if(i==c && i.isE_case_vide()){
 					i.setE_case_touchee(true);
 					i.setBackground(Color.green);
-					System.out.println("Radar : ");
-					System.out.println(Radar(x,y));
-					System.out.println(x);
-					System.out.println(y);
+					//System.out.println("Radar : ");
+					//System.out.println(Radar(x,y));
+					//System.out.println(x);
+					//System.out.println(y);
 					return 0;
 					
-																		}
-				
-								
+																		}			
 								}
 		return -1;	 
 	 															}
 		
-		// comme un declencheur pour manipuler les deux joueurs si le joueur actif c'est a lui de construire les bateaux ou bien les detruire s'il est desactiver il doit attendre son role
+		// comme un declencheur pour manipuler les deux joueurs si le joueur actif c'est a lui de construire les bateaux s'il est desactiver il doit attendre son role
 		
 		public boolean isjoueur_actif() {
 			return joueur_actif;
@@ -182,7 +181,7 @@ import javax.swing.JPanel;
 			this.joueur_actif = activer_joueur;
 		}
 		
-		public int Radar(int h, int z){
+		/*public int Radar(int h, int z){
 			int dif_x=0;
 			int dif_y=0;
 			int min =1000;
@@ -198,7 +197,7 @@ import javax.swing.JPanel;
 				 }
 				 }
 		return min;
-		}
+		}*/
 		
 		 
 		

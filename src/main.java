@@ -12,8 +12,8 @@ public class main {
 		// TODO Auto-generated method stub
 		//Mode_jeu mj = new Mode_jeu();
 		//Joueur_Ordinateur jo = new Joueur_Ordinateur();
-		//Joueur_Joueur jj = new Joueur_Joueur();
-		Ordinateur_Ordinateur oo = new Ordinateur_Ordinateur();
+		Joueur_Joueur jj = new Joueur_Joueur();
+		//Ordinateur_Ordinateur oo = new Ordinateur_Ordinateur();
 	    					}
   
 		
