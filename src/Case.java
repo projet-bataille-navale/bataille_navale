@@ -54,6 +54,9 @@ public class Case extends JButton{
 		return j;
 	}
 	
+	public String toString(){
+		return "x: "+i+" y: "+j+ " id: "+id_case;
+	}
 	
 
 }

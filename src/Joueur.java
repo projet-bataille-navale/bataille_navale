@@ -1,5 +1,7 @@
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -42,14 +44,18 @@ public class Joueur extends Utilisateur implements ActionListener , ListSelectio
 				//la destruction des bateaux
 				if(detruire){
 				c = (Case) e.getSource();
+				Navire n=chercher_bateau(c.getId_case());// chercher le bateau dans la memoire !!
 				//tester si la case est deja touchée !!
 					if(c.isE_case_touchee() ){
 					JOptionPane.showMessageDialog(this,  "Deja touchée "," Attention ",JOptionPane.WARNING_MESSAGE);		
 										}
-					else{
-					Navire n=chercher_bateau(c.getId_case());// chercher le bateau dans la memoire !!
-					touchee = detruire_bateau(this,n,c);
-						}
+					else if(n==null && c.isE_case_vide()) {
+						c.setE_case_touchee(true);
+						c.setBackground(Color.green);
+						touchee = 0;
+					}else{
+						touchee = detruire_bateau(this,n,c);	
+					}
 										}
 				
 				if(!b){

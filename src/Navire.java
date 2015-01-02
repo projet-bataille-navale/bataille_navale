@@ -33,5 +33,9 @@ abstract class Navire {
 		this.nom = nom;
 	}
 	
+	public String toString(){
+		return "le nom : "+nom+" nbr_case : "+nbr_case+" id : "+id;
+		
+	}
 	
 }

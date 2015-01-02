@@ -15,13 +15,13 @@ import javax.swing.JPanel;
 		int id ;
 		String nom;
 		Grille g;
-		Navire bateau;
-		int num_bateau = 1;
+		Navire bateau = null;
+		int num_bateau = 0;
 		boolean detruire = false;
 		
 		ArrayList<Navire> liste_navire;
 		JList<String> List;
-		String[] Navire = {"zodiac", "sous_marin", "porte_avion", "cuirasses_furtifs"};
+		String[] Navire = {"zodiac", "sous_marin", "porte_avion", "cuirasses_furtifs","zodiac"};
 	
 	//GRAPHIC
 
@@ -66,31 +66,27 @@ import javax.swing.JPanel;
 
 			if(Navire == "zodiac"){
 				 Zodiac z = new Zodiac(num_bateau);
-				 liste_navire.add(z);
 				 num_bateau++;
 				 return z;
-				}
+									}
 			
-			else if(Navire == "sous_marin"){
+			if(Navire == "sous_marin"){
 				Sous_marin sm = new Sous_marin(num_bateau);
-				liste_navire.add(sm);
 				num_bateau++;
 				return sm;
 				}
-			else if(Navire == "porte_avion"){
+			if(Navire == "porte_avion"){
 				Porte_avion pa = new Porte_avion(num_bateau);
-				liste_navire.add(pa);
 				num_bateau++;
 				return pa;
 				}
-			else if(Navire == "cuirasses_furtifs"){
+			if(Navire == "cuirasses_furtifs"){
 				Cuirasses_furtifs cf = new Cuirasses_furtifs(num_bateau);
-				liste_navire.add(cf);
 				num_bateau++;
 				return cf;
 				}
-			else
-				return null;
+			else{
+				return null;}
 									}
 	
 	//chercher un bateau dans la liste
@@ -98,12 +94,8 @@ import javax.swing.JPanel;
 	Navire chercher_bateau(int id){
 		for(Navire n : liste_navire){
 			if(n.getId() == id){
-			if(n.id == id){
 				return n;
-								}
-									}
-				
-									
+									}								
 		}
 		return null;
 	}
@@ -130,6 +122,7 @@ import javax.swing.JPanel;
 		for(Case i : g.grille){
 			// on test les x et les y et on test aussi si on a atteind le nombre de case du navire et on test si la case concerné pour la construction du bateau est vide
 			if(i.getI()==x && i.getJ()==y && tmp<b.nbr_case && i.isE_case_vide() ){
+				liste_navire.add(b);
 				i.setId_case(b.id);
 				i.setE_case_vide(false);
 				i.setBackground(Color.BLACK);			 
@@ -143,31 +136,35 @@ import javax.swing.JPanel;
 		//detruire un bateau 
 		
 	public int detruire_bateau(Utilisateur u ,Navire b,Case c){
+		if(b==null)
+			System.out.println("meeeeeeeeeeeeerde");
 		 for(Case i : u.g.grille){	
 			 // on test si la case contient un bateau si oui donc la case contient l'id du bateau
 												//
-			 if(i==c && !i.isE_case_vide() && i.getId_case()==b.id){
+			// if(i==c && i.isE_case_vide() && b==null){
+					//i.setE_case_touchee(true);
+					//i.setBackground(Color.green);
+					//System.out.println("Radar : ");
+					//System.out.println(Radar(x,y));
+					//System.out.println(x);
+					//System.out.println(y);
+					//return 0;
+						//							}
+			 if(i==c && !i.isE_case_vide()){
+				 System.out.println(c);
 					i.setE_bat(true);
 					i.setE_case_touchee(true);
 					i.setBackground(Color.red);
 					b.nbr_case--;
+					System.out.println(b.nbr_case);
 					if(b.nbr_case == 0){
 						JOptionPane.showMessageDialog(g,"Le "+  b.nom+" est coulé"," Attention ",JOptionPane.WARNING_MESSAGE);
 						liste_navire.remove(b);
 										}
 					return 1;
 																}
-				else if(i==c && i.isE_case_vide()){
-					i.setE_case_touchee(true);
-					i.setBackground(Color.green);
-					//System.out.println("Radar : ");
-					//System.out.println(Radar(x,y));
-					//System.out.println(x);
-					//System.out.println(y);
-					return 0;
-					
-																		}			
 								}
+			  
 		return -1;	 
 	 															}
 		
