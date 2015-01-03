@@ -44,7 +44,7 @@ public class Joueur extends Utilisateur implements ActionListener , ListSelectio
 				//la destruction des bateaux
 				if(detruire){
 				c = (Case) e.getSource();
-				Navire n=chercher_bateau(c.getId_case());// chercher le bateau dans la memoire !!
+				Navire n=chercher_bateau(this,c.getId_case());// chercher le bateau dans la memoire !!
 				//tester si la case est deja touchée !!
 					if(c.isE_case_touchee() ){
 					JOptionPane.showMessageDialog(this,  "Deja touchée "," Attention ",JOptionPane.WARNING_MESSAGE);		
@@ -67,7 +67,7 @@ public class Joueur extends Utilisateur implements ActionListener , ListSelectio
 										}	
 						else if(cases_vides(bateau,c.getI(),c.getJ())){
 							creer_bateau(bateau,c.getI(),c.getJ());
-							System.out.println(bateau.id);
+							System.out.println(bateau.getId());
 							activer_List();
 							g.desactiver_grille();
 							cpt++;

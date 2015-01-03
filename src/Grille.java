@@ -4,6 +4,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -35,7 +36,7 @@ public class Grille extends JPanel {
 							}
 		
 		this.add(panel_grille);
-									}
+					}
 			
 	 	//Activer la grille
 	 

@@ -46,10 +46,16 @@ public class Ordinateur_Ordinateur extends JFrame{
 	    }
 
     while(!construction && !user1.liste_navire.isEmpty() && !user2.liste_navire.isEmpty() ){
-    	// si l'ordinateur touche une case qui contient un bateau il va rejoueur !!
+    	try {
+			Thread.sleep(1500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	// si user1 touche une case qui contient un bateau il va rejoueur !!
     	if(user1.touchee == 1)
 	    		user2.detruire(user1);
-	    							
+    	// si user2 touche une case qui contient un bateau il va rejoueur !!							
     	if(user2.touchee == 1)
     			user1.detruire(user2);
     	// si user2 touche une case vide de user1 / user1 c'est a son role de joueur:

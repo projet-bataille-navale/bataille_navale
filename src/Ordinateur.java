@@ -35,7 +35,7 @@ public class Ordinateur extends Utilisateur implements ActionListener{
 				y= coordonnee.nextInt(9 - 0)  ;
 					if(cases_vides(bateau,x,y)){
 						creer_bateau(bateau,x,y);
-						System.out.println(bateau.id +" "+ cpt);
+						System.out.println(bateau.getId() +" "+ cpt);
 						cpt++;
 												}	
 									}
@@ -52,7 +52,7 @@ public class Ordinateur extends Utilisateur implements ActionListener{
 		int y = coordonnee.nextInt(9 - 0)  ;
 		
 		Case c = chercher_case(x,y,u);
-		Navire n=chercher_bateau(c.getId_case());// chercher le bateau dans la memoire !!
+		Navire n=chercher_bateau(u,c.getId_case());// chercher le bateau dans la memoire !!
 		System.out.println(n);
 		//tester si la case est deja touchée !!
 		
@@ -82,7 +82,7 @@ public class Ordinateur extends Utilisateur implements ActionListener{
 		// TODO Auto-generated method stub
 		if(joueur_actif){
 			Case c = (Case) e.getSource();
-			Navire n=chercher_bateau(c.getId_case());
+			Navire n=chercher_bateau(this,c.getId_case());
 			
 			//tester si la case est deja touchée !!
 			if(c.isE_case_touchee() ){

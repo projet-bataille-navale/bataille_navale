@@ -54,7 +54,7 @@ public class La_une {
 		pnl_img.setBounds(0, 0,1282, 755);
 		frame.getContentPane().add(pnl_img);
 		try {
-			pnl_img.setImage("bn.jpg");
+			pnl_img.setImage("bataille-navale-2.jpg");
 			pnl_img.setLayout(null);
 			
 			btn_1j = new JButton("Un Joueur");

@@ -47,7 +47,7 @@ import javax.swing.JPanel;
 		 int tmp = 0;
 		 for(Case i : g.grille){
 			 
-			 if(i.getI()==x && i.getJ()==y && tmp<b.nbr_case ){
+			 if(i.getI()==x && i.getJ()==y && tmp<b.getNbr_case()){
 				 
 				 if(!i.isE_case_vide()){
 				// JOptionPane.showMessageDialog(g,  "y'a un autre bateau proche"," Attention ",JOptionPane.WARNING_MESSAGE);
@@ -91,8 +91,8 @@ import javax.swing.JPanel;
 	
 	//chercher un bateau dans la liste
 	
-	Navire chercher_bateau(int id){
-		for(Navire n : liste_navire){
+	Navire chercher_bateau(Utilisateur u,int id){
+		for(Navire n : u.liste_navire){
 			if(n.getId() == id){
 				return n;
 									}								
@@ -121,9 +121,9 @@ import javax.swing.JPanel;
 		int tmp =0;			
 		for(Case i : g.grille){
 			// on test les x et les y et on test aussi si on a atteind le nombre de case du navire et on test si la case concerné pour la construction du bateau est vide
-			if(i.getI()==x && i.getJ()==y && tmp<b.nbr_case && i.isE_case_vide() ){
+			if(i.getI()==x && i.getJ()==y && tmp<b.getNbr_case() && i.isE_case_vide() ){
 				liste_navire.add(b);
-				i.setId_case(b.id);
+				i.setId_case(b.getId());
 				i.setE_case_vide(false);
 				i.setBackground(Color.BLACK);			 
 				y++;
@@ -150,15 +150,16 @@ import javax.swing.JPanel;
 					//System.out.println(y);
 					//return 0;
 						//							}
-			 if(i==c && !i.isE_case_vide()){
+			 if(i==c && !i.isE_case_vide() && b.getId() == c.getId_case()){
 				 System.out.println(c);
 					i.setE_bat(true);
 					i.setE_case_touchee(true);
 					i.setBackground(Color.red);
-					b.nbr_case--;
-					System.out.println(b.nbr_case);
-					if(b.nbr_case == 0){
-						JOptionPane.showMessageDialog(g,"Le "+  b.nom+" est coulé"," Attention ",JOptionPane.WARNING_MESSAGE);
+					
+					b.setNbr_case(b.getNbr_case()-1);
+					System.out.println(b.getNbr_case());
+					if(b.getNbr_case() == 0){
+						JOptionPane.showMessageDialog(u.g,"Le "+  b.getNom()+" est coulé"," Attention ",JOptionPane.WARNING_MESSAGE);
 						liste_navire.remove(b);
 										}
 					return 1;
