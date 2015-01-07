@@ -1,3 +1,4 @@
+package Controleur;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -5,6 +6,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+
+import Modele.Case;
+import Modele.Navire;
 
 
 public class Joueur extends Utilisateur implements ActionListener , ListSelectionListener{

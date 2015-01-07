@@ -1,3 +1,4 @@
+package Vue;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -10,9 +11,11 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import Modele.Case;
+
 public class Grille extends JPanel {
 	
-	ArrayList<Case> grille;
+	public ArrayList<Case> grille;
 	int i,j;// les i "x" et les j "y" pour la contruction de la grille (parcourir)
 	
 	JPanel panel_grille;
@@ -40,7 +43,7 @@ public class Grille extends JPanel {
 			
 	 	//Activer la grille
 	 
-		void activer_grille(){
+		public void activer_grille(){
 			for(Case y : grille){
 				y.setEnabled(true);		
 								}
@@ -48,13 +51,13 @@ public class Grille extends JPanel {
 		
 		//désactiver la grille
 		
-		void desactiver_grille(){
+		public void desactiver_grille(){
 			for(Case y : grille){
 				y.setEnabled(false);		
 								}
 								}
 		
-		void hide_grille(){
+		public void hide_grille(){
 			for(Case y : grille){
 				y.setBackground(Color.WHITE);		
 								}

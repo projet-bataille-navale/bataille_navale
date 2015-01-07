@@ -1,9 +1,13 @@
+package Controleur;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 
 import javax.swing.JOptionPane;
+
+import Modele.Case;
+import Modele.Navire;
 
 
 public class Ordinateur extends Utilisateur implements ActionListener{

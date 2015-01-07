@@ -5,6 +5,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import Controleur.Joueur_Ordinateur;
+
 
 public class main {
 

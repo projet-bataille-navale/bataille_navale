@@ -1,10 +1,20 @@
+package Controleur;
 import java.awt.Color;
+
 import java.awt.FlowLayout;
 import java.util.ArrayList;
 
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import Modele.Case;
+import Modele.Cuirasses_furtifs;
+import Modele.Navire;
+import Modele.Porte_avion;
+import Modele.Sous_marin;
+import Modele.Zodiac;
+import Vue.Grille;
 
 
  class Utilisateur extends JPanel {
