@@ -12,7 +12,7 @@ import javax.swing.JLabel;
 
 
 //Class Test pour le premier interface
-public class La_une {
+public class La_une implements ActionListener {
 
 	private JFrame frame;
 		PanelImage pnl_img;
@@ -21,27 +21,10 @@ public class La_une {
 		private JButton btn_demo;
 		private JButton btn_q;
 	
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					La_une window = new La_une();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
+	 
 	public La_une() {
 		initialize();
+		
 	}
 
 	/**
@@ -53,6 +36,7 @@ public class La_une {
 		pnl_img = new PanelImage();
 		pnl_img.setBounds(0, 0,1282, 755);
 		frame.getContentPane().add(pnl_img);
+		 frame.setVisible(true);
 		try {
 			pnl_img.setImage("bn.jpg");
 			pnl_img.setLayout(null);
@@ -61,6 +45,7 @@ public class La_une {
 			btn_1j.setForeground(Color.ORANGE);
 			btn_1j.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 25));
 			btn_1j.setBounds(917, 430, 257, 45);
+			btn_1j.addActionListener(this);
 			pnl_img.add(btn_1j);
 			
 			btn_1j.setContentAreaFilled(false);
@@ -97,5 +82,16 @@ public class La_une {
 		}
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+	}
+
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		Object source = arg0.getSource();
+		if(source==btn_1j){
+			frame.dispose();
+			//Joueur_Ordinateur jo = new Joueur_Ordinateur();
+			  new Joueur_Joueur();
+		}
+		
 	}
 }

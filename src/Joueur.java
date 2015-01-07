@@ -64,7 +64,11 @@ public class Joueur extends Utilisateur implements ActionListener , ListSelectio
 					if (cpt < nbr_bateaux ){
 						if(!c.isE_case_vide()){
 							JOptionPane.showMessageDialog(this,  "la case est deja remplie !"," Attention ",JOptionPane.WARNING_MESSAGE);
-										}	
+										}
+						//teste pour eviter de creer le bateau hors grille 
+						if(c.getJ()+bateau.getNbr_case()>10){
+							JOptionPane.showMessageDialog(this,  "Bateau Hors grille !!!"," Attention ",JOptionPane.WARNING_MESSAGE);	
+						}
 						else if(cases_vides(bateau,c.getI(),c.getJ())){
 							creer_bateau(bateau,c.getI(),c.getJ());
 							System.out.println(bateau.id);
