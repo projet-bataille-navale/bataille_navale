@@ -1,8 +1,9 @@
+package Modele;
 
-abstract class Navire {
+public abstract class Navire {
 
-	int id , nbr_case;
-	String nom;
+	private int id , nbr_case;
+	private String nom;
 
 	public Navire(int id) {
 		super();
