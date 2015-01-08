@@ -1,3 +1,4 @@
+package Controleur;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -5,6 +6,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+
+import Modele.Case;
+import Modele.Navire;
 
 
 
@@ -53,7 +57,7 @@ public class Joueur extends Utilisateur implements ActionListener , ListSelectio
 				if(c.isE_case_touchee() ){
 					JOptionPane.showMessageDialog(this,  "Deja touchée "," Attention ",JOptionPane.WARNING_MESSAGE);		
 				}
-				
+
 				else if(n==null && c.isE_case_vide()) {
 					c.setE_case_touchee(true);
 					c.setBackground(Color.green);
@@ -73,11 +77,11 @@ public class Joueur extends Utilisateur implements ActionListener , ListSelectio
 					if(c.getJ()+bateau.getNbr_case()>10){
 						JOptionPane.showMessageDialog(this,  "Bateau Hors grille !!!"," Attention ",JOptionPane.WARNING_MESSAGE);	
 					}
-					
+
 					else if(cases_vides(bateau,c.getI(),c.getJ(),false)){
 						int dialogResult = JOptionPane.showConfirmDialog (null, "Créer le bateau horizontalement ? ","",JOptionPane.YES_NO_OPTION);
 						// Test si horizontal
-						
+
 						if(dialogResult==JOptionPane.YES_OPTION){
 							// si il y a pas de bateau au dessous et il ne depace pas la grille 
 							if(cases_vides(bateau,c.getI(),c.getJ(),true)&&(c.getI()+bateau.getNbr_case()<=10)){
@@ -88,9 +92,9 @@ public class Joueur extends Utilisateur implements ActionListener , ListSelectio
 								cpt++;
 								b=true;
 							}
-								else
+							else
 								JOptionPane.showMessageDialog(this,  "Bateau Hors grille !!!"," Attention ",JOptionPane.WARNING_MESSAGE);
-							
+
 						}else{
 							creer_bateau(bateau,c.getI(),c.getJ(),false);
 							System.out.println(bateau.getId());
@@ -99,8 +103,8 @@ public class Joueur extends Utilisateur implements ActionListener , ListSelectio
 							cpt++;
 							b=true;
 						}
-						
-						
+
+
 					}
 
 					//si le nombre de bateaux est atteint le message se déclenche

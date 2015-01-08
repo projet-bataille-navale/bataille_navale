@@ -1,13 +1,16 @@
+package Vue;
 import java.awt.EventQueue;
 import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
+
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.JLabel;
 
 
@@ -54,7 +57,7 @@ public class La_une {
 		pnl_img.setBounds(0, 0,1282, 755);
 		frame.getContentPane().add(pnl_img);
 		try {
-			pnl_img.setImage("bataille-navale-2.jpg");
+			pnl_img.setImage("bn.jpg");
 			pnl_img.setLayout(null);
 			
 			btn_1j = new JButton("Un Joueur");

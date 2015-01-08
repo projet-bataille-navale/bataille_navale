@@ -1,3 +1,4 @@
+package Controleur;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 
@@ -47,7 +48,7 @@ public class Joueur_Joueur extends JFrame{
 			}    	
 		}
 
-		while(!construction ){
+		while(!construction && !user1.liste_navire.isEmpty() && !user2.liste_navire.isEmpty()){
 			// si user2 touche une case vide de user :
 			if(user1.touchee == 0 ){
 				user1.g.desactiver_grille();

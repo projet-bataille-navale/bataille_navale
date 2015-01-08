@@ -1,3 +1,4 @@
+package Vue;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -9,6 +10,8 @@ import java.util.HashSet;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import Modele.Case;
 
 
 public class Grille extends JPanel {
@@ -32,6 +35,8 @@ public class Grille extends JPanel {
 		// creation de la grille sur la vue !
 		for(Case y : grille){
 			y.setBackground(Color.blue);
+			y.setPreferredSize(new Dimension(30, 15));
+			repaint();
 			y.setEnabled(false);
 			panel_grille.add(y);		
 		}

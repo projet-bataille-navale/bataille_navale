@@ -1,12 +1,20 @@
+package Controleur;
 import java.awt.Color;
-
 import java.awt.FlowLayout;
 import java.util.ArrayList;
 
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
- 
+
+import Modele.Case;
+import Modele.Cuirasses_furtifs;
+import Modele.Navire;
+import Modele.Porte_avion;
+import Modele.Sous_marin;
+import Modele.Zodiac;
+import Vue.Grille;
+
 
 
 class Utilisateur extends JPanel {
@@ -55,7 +63,7 @@ class Utilisateur extends JPanel {
 					return false;
 				}
 				if(!ver)
-				y++;
+					y++;
 				else
 					x++;
 				tmp++;
@@ -132,7 +140,7 @@ class Utilisateur extends JPanel {
 				i.setE_case_vide(false);
 				i.setBackground(Color.BLACK);	
 				if(!ver)
-				y++;
+					y++;
 				else
 					x++;
 				tmp++;
@@ -140,19 +148,17 @@ class Utilisateur extends JPanel {
 		}
 
 	}
-	
+
 	//Créer le bateau horizontalement
 	void creer_horizontal(Navire b, int x, int y){
-		
-		
-		
+
+
+
 	}
 
 	//detruire un bateau 
 
 	public int detruire_bateau(Utilisateur u ,Navire b,Case c){
-		if(b==null)
-			System.out.println("meeeeeeeeeeeeerde");
 		for(Case i : u.g.grille){	
 			// on test si la case contient un bateau si oui donc la case contient l'id du bateau
 			//
@@ -166,13 +172,10 @@ class Utilisateur extends JPanel {
 			//return 0;
 			//							}
 			if(i==c && !i.isE_case_vide() && b.getId() == c.getId_case()){
-				System.out.println(c);
 				i.setE_bat(true);
 				i.setE_case_touchee(true);
 				i.setBackground(Color.red);
-
 				b.setNbr_case(b.getNbr_case()-1);
-				System.out.println(b.getNbr_case());
 				if(b.getNbr_case() == 0){
 					JOptionPane.showMessageDialog(u.g,"Le "+  b.getNom()+" est coulé"," Attention ",JOptionPane.WARNING_MESSAGE);
 					liste_navire.remove(b);
