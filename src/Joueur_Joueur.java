@@ -49,19 +49,19 @@ public class Joueur_Joueur extends JFrame{
 
 		while(!construction ){
 			// si user2 touche une case vide de user :
-				if(user1.touchee == 0 ){
-					user1.g.desactiver_grille();
-					user2.g.activer_grille();
-					user1.touchee = -1;
-				}
+			if(user1.touchee == 0 ){
+				user1.g.desactiver_grille();
+				user2.g.activer_grille();
+				user1.touchee = -1;
+			}
 
-				// si user1 touche une case vide de user2 :
-				if(user2.touchee == 0){
-					user2.g.desactiver_grille();
-					user1.g.activer_grille();
-					//user2.detruire(user);
-					user2.touchee = -1;				
-				}
+			// si user1 touche une case vide de user2 :
+			if(user2.touchee == 0){
+				user2.g.desactiver_grille();
+				user1.g.activer_grille();
+				//user2.detruire(user);
+				user2.touchee = -1;				
+			}
 		}
 
 	}

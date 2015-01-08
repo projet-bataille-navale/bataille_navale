@@ -1,4 +1,3 @@
-package Controleur;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -6,8 +5,6 @@ import java.util.Random;
 
 import javax.swing.JOptionPane;
 
-import Modele.Case;
-import Modele.Navire;
 
 public class Ordinateur extends Utilisateur implements ActionListener{
 
@@ -33,8 +30,8 @@ public class Ordinateur extends Utilisateur implements ActionListener{
 				bateau=bateau(Navire[cpt]);
 				x= coordonnee.nextInt(9 - 0)  ;
 				y= coordonnee.nextInt(9 - 0)  ;
-				if(cases_vides(bateau,x,y)){
-					creer_bateau(bateau,x,y);
+				if(cases_vides(bateau,x,y,false)){
+					creer_bateau(bateau,x,y,false);
 					System.out.println(bateau.getId() +" "+ cpt);
 					cpt++;
 				}	

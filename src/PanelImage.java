@@ -1,4 +1,3 @@
-package Vue;
 
 
 import java.awt.Graphics;

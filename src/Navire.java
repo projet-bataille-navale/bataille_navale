@@ -1,4 +1,3 @@
-package Modele;
 
 public abstract class Navire {
 

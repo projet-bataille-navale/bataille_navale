@@ -1,4 +1,3 @@
-package Modele;
 
 
 public class Zodiac extends Navire {

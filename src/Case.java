@@ -1,4 +1,3 @@
-package Modele;
 import javax.swing.JButton;
 
 public class Case extends JButton{
